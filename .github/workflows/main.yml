@@ -38,4 +38,36 @@ jobs:
         env:
           PACKER_LOG: 1
 
+  deploy-AWS:
+    runs-on: ubuntu-latest
+    environment:
+      name: AWS
+    needs: packer
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      # init
+      - name: Init
+        uses: hashicorp/packer-github-actions@master
+        with:
+          command: init
+
+      # validate templates
+      - name: Validate Template
+        uses: hashicorp/packer-github-actions@master
+        with:
+          command: validate
+          arguments: -syntax-only
+          target: veeam.pkr.hcl
+
+      # build artifact
+      - name: Build Artifact
+        uses: hashicorp/packer-github-actions@master
+        with:
+          command: build
+          arguments: "-color=false -on-error=abort"
+          target: veeam.pkr.hcl
+        env:
+          PACKER_LOG: 1
 ...
