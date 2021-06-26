@@ -26,8 +26,35 @@ source "amazon-ebs" "ubuntu" {
   ssh_username = "ubuntu"
 }
 
+
 build {
   sources = [
     "source.amazon-ebs.ubuntu"
   ]
+
+  provisioner "shell" {
+    inline = [
+      "echo Update packages",
+      "apt-get update -y",
+      "apt-get install python3-pip -y",
+      "echo Install uvicorn package",
+      "pip3 install uvicorn",
+      "echo Install fastapi package",
+      "pip3 install fastapi",
+      "echo Install requests package",
+      "pip3 install requests",
+      "mkdir /app",
+      "cd /app",
+    ]
+  }
+
+  provisioner "file" {
+    source      = "main.py"
+    destination = "/app/main.py"
+  }
+  provisioner "file" {
+    source      = "app.service"
+    destination = "/etc/systemd/system/app.service"
+  }
+
 }
