@@ -43,7 +43,7 @@ build {
       "sudo pip3 install fastapi",
       "echo Install requests package",
       "sudo pip3 install requests",
-      "mkdir /app"
+      "mkdir app"
     ]
   }
 
@@ -54,7 +54,7 @@ build {
 
   provisioner "file" {
     source      = "main.py"
-    destination = "/app/main.py"
+    destination = "app/main.py"
   }
 
 }
