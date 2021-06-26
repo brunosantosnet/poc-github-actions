@@ -3,13 +3,12 @@ provider "aws" {
 }
 
 data "aws_ami" "myami" {
-  executable_users = ["self"]
   most_recent      = true
-  owners           = ["self"]
+  owners           = ["295845076046"]
 
   filter {
     name   = "name"
-    values = ["veeam"]
+    values = ["myami*"]
   }
 
 }
