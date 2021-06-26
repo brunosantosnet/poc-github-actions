@@ -46,12 +46,12 @@ build {
       "mkdir app"
     ]
   }
-
+/*
   provisioner "file" {
     source      = "app.service"
     destination = "/etc/systemd/system/app.service"
   }
-
+*/
   provisioner "file" {
     source      = "main.py"
     destination = "app/main.py"
