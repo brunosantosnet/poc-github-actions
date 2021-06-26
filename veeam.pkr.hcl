@@ -43,18 +43,18 @@ build {
       "sudo pip3 install fastapi",
       "echo Install requests package",
       "sudo pip3 install requests",
-      "sudo mkdir /app",
-      "cd /app",
+      "mkdir /app"
     ]
+  }
+
+  provisioner "file" {
+    source      = "app.service"
+    destination = "/etc/systemd/system/app.service"
   }
 
   provisioner "file" {
     source      = "main.py"
     destination = "/app/main.py"
-  }
-  provisioner "file" {
-    source      = "app.service"
-    destination = "/etc/systemd/system/app.service"
   }
 
 }
