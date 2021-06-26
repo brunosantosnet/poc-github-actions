@@ -34,7 +34,7 @@ build {
 
   provisioner "shell" {
     inline = [
-      "echo Update packages",
+      "echo Update packages vaiiiiiiiiii",
       "apt-get update -y",
       "apt-get install python3-pip -y",
       "echo Install uvicorn package",
