@@ -7,7 +7,7 @@ packer {
   }
 }
 
-source "amazon-ebs" "ubuntu" {
+source "amazon-ebs" "linux" {
   ami_name      ="myami-${formatdate("YYYYMMDDhhmm", timeadd(timestamp(), "-3h"))}"
   instance_type = "t2.micro"
   region        = "us-east-1"
@@ -16,29 +16,31 @@ source "amazon-ebs" "ubuntu" {
   }
   source_ami_filter {
     filters = {
-      name                = "ubuntu/images/*ubuntu-xenial-16.04-amd64-server-*"
+      name                = "amzn2-ami-hvm*"
       root-device-type    = "ebs"
       virtualization-type = "hvm"
     }
     most_recent = true
-    owners      = ["099720109477"]
+    owners      = ["amazon"]
   }
-  ssh_username = "ubuntu"
+  ssh_username = "ec2-user"
 }
 
 
 build {
   sources = [
-    "source.amazon-ebs.ubuntu"
+    "source.amazon-ebs.linux"
   ]
 
   provisioner "shell" {
     inline = [
-      "echo Update packages vaiiiiiiiiii",
-      "sudo apt-get update -y",
-      "sudo apt-get install python3-pip -y",
-      "echo Install uvicorn package",
+      "echo Update packages",
+      #"sudo apt-get update -y",
+      "sudo yum update -y"
+      #"sudo apt-get install python3-pip -y",
+      "echo Install flask package",
       "sudo pip3 install uvicorn",
+      #"sudo pip3 install flask",
       "echo Install fastapi package",
       "sudo pip3 install fastapi",
       "echo Install requests package",
