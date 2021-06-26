@@ -9,7 +9,7 @@ data "aws_ami" "myami" {
 
   filter {
     name   = "name"
-    values = ["veeam-*"]
+    values = ["veeam"]
   }
 
 }
