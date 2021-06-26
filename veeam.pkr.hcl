@@ -36,7 +36,7 @@ build {
     inline = [
       "echo Update packages",
       #"sudo apt-get update -y",
-      "sudo yum update -y"
+      "sudo yum update -y",
       #"sudo apt-get install python3-pip -y",
       "echo Install flask package",
       "sudo pip3 install uvicorn",
