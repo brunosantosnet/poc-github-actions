@@ -35,16 +35,16 @@ build {
   provisioner "shell" {
     inline = [
       "echo Update packages vaiiiiiiiiii",
-      "apt-get update -y",
-      "apt-get install python3-pip -y",
+      "sudo apt-get update -y",
+      "sudo apt-get install python3-pip -y",
       "echo Install uvicorn package",
-      "pip3 install uvicorn",
+      "sudo pip3 install uvicorn",
       "echo Install fastapi package",
-      "pip3 install fastapi",
+      "sudo pip3 install fastapi",
       "echo Install requests package",
-      "pip3 install requests",
-      "mkdir /app",
-      "cd /app",
+      "sudo pip3 install requests",
+      "sudo mkdir /app",
+      "sudo cd /app",
     ]
   }
 
