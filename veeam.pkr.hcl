@@ -44,7 +44,7 @@ build {
       "echo Install requests package",
       "sudo pip3 install requests",
       "sudo mkdir /app",
-      "sudo cd /app",
+      "cd /app",
     ]
   }
 
