@@ -8,11 +8,11 @@ packer {
 }
 
 source "amazon-ebs" "ubuntu" {
-  ami_name      = "learn-packer-linux-aws"
+  ami_name      ="myami-${formatdate("YYYYMMDDhhmm", timeadd(timestamp(), "-3h"))}"
   instance_type = "t2.micro"
   region        = "us-east-1"
   tags          = {
-    project = "veeam"
+    name = "veeam"
   }
   source_ami_filter {
     filters = {
