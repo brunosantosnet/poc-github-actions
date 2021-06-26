@@ -3,8 +3,8 @@ provider "aws" {
 }
 
 data "aws_ami" "myami" {
-  most_recent      = true
-  owners           = ["295845076046"]
+  most_recent = true
+  owners      = ["295845076046"]
 
   filter {
     name   = "name"
