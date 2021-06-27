@@ -5,7 +5,7 @@ After=syslog.target network-online.target
 
 [Service]
 Type=simple
-ExecStart=python3 ~/app/main.py
+ExecStart=/usr/local/bin/myapp.sh
 Restart=on-failure
 RestartSec=10
 KillMode=process
