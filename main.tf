@@ -42,5 +42,5 @@ resource "aws_instance" "test" {
   ami                    = data.aws_ami.myami.id
   instance_type          = "t2.micro"
   key_name               = "brunosantosnet"
-  vpc_security_group_ids = aws_security_group.http.id
+  vpc_security_group_ids = [aws_security_group.http.id]
 }
