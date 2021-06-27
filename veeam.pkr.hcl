@@ -48,15 +48,31 @@ build {
       "mkdir app"
     ]
   }
-/*
-  provisioner "file" {
-    source      = "app.service"
-    destination = "/etc/systemd/system/app.service"
-  }
-*/
+
   provisioner "file" {
     source      = "main.py"
     destination = "app/main.py"
+  }
+
+  provisioner "file" {
+    source      = "myapp.sh"
+    destination = "app/myapp.sh"
+  }
+
+  provisioner "file" {
+    source      = "myapp.service"
+    destination = "app/myapp.service"
+  }
+
+  provisioner "shell" {
+    inline = [
+      "sudo cp app/myapp.sh /usr/local/bin",
+      "sudo chmod +x /usr/local/bin/myapp.sh",
+      "sudo cp app/myapp.service /etc/systemd/system",
+      "sudo systemctl daemon-reload",
+      "sudo systemctl enable myapp",
+      "sudo systemctl start myapp"
+    ]
   }
 
 }
