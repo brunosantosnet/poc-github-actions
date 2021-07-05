@@ -12,7 +12,7 @@ source "amazon-ebs" "linux" {
   instance_type = "t2.micro"
   region        = "us-east-1"
   tags          = {
-    name = "veeam"
+    name = "poc-github-actions"
   }
   source_ami_filter {
     filters = {
